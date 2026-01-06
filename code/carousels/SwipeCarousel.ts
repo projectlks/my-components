@@ -1,0 +1,1 @@
+export const SwipeCarousel = `import { useState, useRef } from "react";`
