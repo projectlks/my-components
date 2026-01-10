@@ -50,6 +50,7 @@ export default function VerticalIndicatorNav({
     transition-all duration-300
     hover:pl-2
  ease-in-out
+
     ${activeHref === href
                                 ? "text-neutral-950 font-bold"
                                 : "text-neutral-500 hover:text-neutral-950"}

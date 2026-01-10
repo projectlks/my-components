@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 
-/* အရောင် theme ကိုရွေးချယ်ပါ။ ဥပမာ "okaidia" */
+
 @import "prismjs/themes/prism-okaidia.css";
 
 
@@ -33,12 +33,48 @@ body {
 
 /* hide scrollbar for all browsers */
 .no-scrollbar {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE 10+ */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE 10+ */
 }
 
 .no-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Edge */
+  display: none;
+  /* Chrome, Safari, Edge */
 }
 
 
+/* View Transition Styles */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+
+  animation: none !important;
+}
+
+
+::view-transition-group(root) {
+  z-index: auto !important;
+}
+
+::view-transition-image-pair(root) {
+  isolation: isolate;
+
+  will-change: transform, opacity, clip-path;
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+
+  z-index: 10000;
+  animation: none !important;
+
+
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+  animation: none !important;
+
+}

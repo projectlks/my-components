@@ -2,6 +2,7 @@
 
 import { ReactNode, useState } from "react";
 import { EyeIcon, LinkIcon, CodeBracketIcon } from "@heroicons/react/24/outline";
+import { toast } from "react-toastify";
 
 type ProjectHeaderProps = {
     title: string;
@@ -16,7 +17,8 @@ export default function ProjectHeader({ title, link, view, code }: ProjectHeader
     const copyToClipboard = async (text: string) => {
         try {
             await navigator.clipboard.writeText(text);
-            alert("Link copied!");
+            toast.success("Link copied to clipboard!");
+   
         } catch (err) {
             console.error("Failed to copy:", err);
         }
@@ -35,7 +37,7 @@ export default function ProjectHeader({ title, link, view, code }: ProjectHeader
                     {/* Copy Link */}
                     <button
                         onClick={() => copyToClipboard(link)}
-                        className="text-xl transition-colors cursor-pointer hover:text-indigo-600"
+                        className="text-xl transition-colors cursor-pointer  h-full px-3 md:px-2.5 py-2 md:py-1.5  hover:text-indigo-600"
                     >
                         <LinkIcon className="w-5 h-5" />
                     </button>

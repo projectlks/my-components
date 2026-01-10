@@ -10,7 +10,8 @@ import "prismjs/components/prism-css";
 import "prismjs/components/prism-markup";
 
 // theme
-import "prismjs/themes/prism-okaidia.css";
+import "prismjs/themes/prism-tomorrow.css";
+
 import { toast } from "react-toastify";
 
 type CodeBlockProps = {
@@ -31,9 +32,11 @@ export default function CodeBlock({ code, language }: CodeBlockProps) {
   };
 
   return (
-    <div className="relative rounded-lg h-[60vh] no-scrollbar overflow-auto bg-[#272822] px-5 md:px-10 pb-20  ">
+    <div className="relative rounded-lg h-[60vh] no-scrollbar overflow-auto bg-[#2d2d2d] px-5 md:px-10 pb-20  ">
       {/* Sticky button */}
-      <button
+
+
+     <button
         onClick={handleCopy}
         className="sticky top-5 float-right mb-5 h-11 rounded bg-neutral-600  p-3 text-lg text-neutral-50 transition-colors hover:bg-neutral-500"
       >
@@ -52,11 +55,17 @@ export default function CodeBlock({ code, language }: CodeBlockProps) {
           <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
         </svg>
       </button>
+ 
 
       {/* Code */}
-      <pre className="m-0 bg-neutral-950 ">
-        <code className={`language-${language}`}>{code}</code>
+
+
+      <pre className="m-0 whitespace-pre-wrap wrap-break-words no-scrollbar ">
+        <code className={`language-${language} wrap-break-words`}>
+          {code}
+        </code>
       </pre>
+
     </div>
 
   );
