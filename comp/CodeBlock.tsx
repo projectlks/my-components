@@ -1,44 +1,47 @@
 "use client";
 
-import { useEffect } from "react";
-import Prism from "prismjs";
-
-// languages
-import "prismjs/components/prism-javascript";
-import "prismjs/components/prism-typescript";
-import "prismjs/components/prism-css";
-import "prismjs/components/prism-markup";
-
-// theme
-import "prismjs/themes/prism-tomorrow.css";
-
+import { useEffect, useRef } from "react";
+import Prism from "@/libs/prism";
 import { toast } from "react-toastify";
 
 type CodeBlockProps = {
   code: string;
-  language: "js" | "ts" | "css" | "html";
+  language: "js" | "ts" | "tsx" | "css" | "html";
 };
 
+const langMap = {
+  js: "javascript",
+  ts: "typescript",
+  tsx: "tsx",
+  css: "css",
+  html: "markup",
+} as const;
+
+
 export default function CodeBlock({ code, language }: CodeBlockProps) {
+  const codeRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    Prism.highlightAll();
+    if (codeRef.current) {
+      Prism.highlightElement(codeRef.current);
+    }
   }, [code]);
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(code);
     toast.success("Code copied successfully! 🎉");
-
   };
 
   return (
-    <div className="relative rounded-lg h-[60vh] no-scrollbar overflow-auto bg-[#2d2d2d] px-5 md:px-10 pb-20  ">
-      {/* Sticky button */}
+    <div className="relative h-[60vh] overflow-auto rounded-xl no-scrollbar bg-[#0F172a] px-5 md:px-10 pb-20 no-scrollbar">
+
+      {/* Copy Button */}
 
 
-     <button
+      <button
+        aria-label="Copy code"
         onClick={handleCopy}
-        className="sticky top-5 float-right mb-5 h-11 rounded bg-neutral-600  p-3 text-lg text-neutral-50 transition-colors hover:bg-neutral-500"
+        className="sticky top-5 float-right mb-5 h-11 rounded-lg bg-white/30 p-3 text-lg text-neutral-50 backdrop-blur-md  border-white/20 transition-colors hover:bg-white/40"
       >
         <svg
           stroke="currentColor"
@@ -55,18 +58,15 @@ export default function CodeBlock({ code, language }: CodeBlockProps) {
           <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
         </svg>
       </button>
- 
+
 
       {/* Code */}
-
-
-      <pre className="m-0 whitespace-pre-wrap wrap-break-words no-scrollbar ">
-        <code className={`language-${language} wrap-break-words`}>
+      <pre className={`language-${langMap[language]} no-scrollbar  m-0!`}>
+        <code ref={codeRef} className={`language-${langMap[language]}`}>
           {code}
         </code>
       </pre>
-
     </div>
-
   );
 }
+

@@ -1,58 +1,24 @@
 @import "tailwindcss";
-
-
-
 @import "prismjs/themes/prism-okaidia.css";
 
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
+/* Manual dark mode selector using class */
+@custom-variant dark (&:where(.dark, .dark *));
 
 /* hide scrollbar for all browsers */
 .no-scrollbar {
-  scrollbar-width: none;
-  /* Firefox */
-  -ms-overflow-style: none;
-  /* IE 10+ */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
 }
 
 .no-scrollbar::-webkit-scrollbar {
-  display: none;
-  /* Chrome, Safari, Edge */
+  display: none; /* Chrome, Safari, Edge */
 }
-
 
 /* View Transition Styles */
-
 ::view-transition-old(root),
 ::view-transition-new(root) {
-
   animation: none !important;
 }
-
 
 ::view-transition-group(root) {
   z-index: auto !important;
@@ -60,21 +26,182 @@ body {
 
 ::view-transition-image-pair(root) {
   isolation: isolate;
-
   will-change: transform, opacity, clip-path;
   z-index: 1;
 }
 
 ::view-transition-new(root) {
-
   z-index: 10000;
   animation: none !important;
-
-
 }
 
 ::view-transition-old(root) {
   z-index: 1;
   animation: none !important;
+}
 
+/* ============================= */
+/* Tailwind Docs – Prism Theme   */
+/* ============================= */
+pre[class*="language-"] {
+  @apply relative overflow-x-auto rounded-xl bg-[#0f172a] p-4 text-sm leading-6 text-slate-100;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
+
+code[class*="language-"] {
+  @apply text-slate-100;
+}
+
+/* Tokens */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #64748b;
+}
+
+.token.punctuation {
+  color: #94a3b8;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #7dd3fc;
+}
+
+.token.boolean,
+.token.number {
+  color: #fca5a5;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #86efac;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.token.variable {
+  color: #fbbf24;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+  color: #c4b5fd;
+}
+
+.token.keyword {
+  color: #f472b6;
+}
+
+.token.regex,
+.token.important {
+  color: #fdba74;
+}
+
+.token.important {
+  font-weight: 600;
+}
+
+
+/* Custom animations */
+
+
+/* Orbit 1 - opposite directions and different speeds */
+@keyframes orbit1 {
+  0% {
+    transform: rotate(0deg) translateX(200px) rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg) translateX(200px) rotate(-360deg);
+  }
+}
+
+@keyframes orbit1-alt {
+  0% {
+    transform: rotate(180deg) translateX(200px) rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-180deg) translateX(200px) rotate(360deg);
+  }
+}
+
+/* Orbit 2 */
+@keyframes orbit2 {
+  0% {
+    transform: rotate(0deg) translateX(350px) rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg) translateX(350px) rotate(-360deg);
+  }
+}
+
+@keyframes orbit2-alt {
+  0% {
+    transform: rotate(90deg) translateX(350px) rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(450deg) translateX(350px) rotate(-360deg);
+  }
+}
+
+/* Orbit 3 */
+@keyframes orbit3 {
+  0% {
+    transform: rotate(0deg) translateX(500px) rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg) translateX(500px) rotate(-360deg);
+  }
+}
+
+@keyframes orbit3-alt {
+  0% {
+    transform: rotate(270deg) translateX(500px) rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(630deg) translateX(500px) rotate(-360deg);
+  }
+}
+
+/* Assign animations with different durations for uniqueness */
+.animate-orbit1 {
+  animation: orbit1 15s linear infinite;
+}
+
+.animate-orbit1-alt {
+  animation: orbit1-alt 25s linear infinite;
+}
+
+.animate-orbit2 {
+  animation: orbit2 35s linear infinite;
+}
+
+.animate-orbit2-alt {
+  animation: orbit2-alt 50s linear infinite;
+}
+
+.animate-orbit3 {
+  animation: orbit3 60s linear infinite;
+}
+
+.animate-orbit3-alt {
+  animation: orbit3-alt 80s linear infinite;
 }

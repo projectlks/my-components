@@ -59,52 +59,52 @@ export default function Sidebar() {
 
 
 
-    function slideInOut() {
+    // function slideInOut() {
 
-        document.documentElement.animate(
-            [
-                {
-                    opacity: 1,
-                    transform: "translateY(0px)",
-                },
-                {
-                    opacity: 0.2,
-                    transform: "translateY(-35%)",
-                }
-            ], {
-            duration: 1500,
-            easing: "cubic-bezier(0.87, 0, 0.13, 1)",
-            fill: "forwards",
-            pseudoElement: "::view-transition-old(root)",
+    //     document.documentElement.animate(
+    //         [
+    //             {
+    //                 opacity: 1,
+    //                 transform: "translateY(0px)",
+    //             },
+    //             {
+    //                 opacity: 0.2,
+    //                 transform: "translateY(-35%)",
+    //             }
+    //         ], {
+    //         duration: 1000,
+    //         easing: "cubic-bezier(0.87, 0, 0.13, 1)",
+    //         fill: "forwards",
+    //         pseudoElement: "::view-transition-old(root)",
 
-        }
-        )
+    //     }
+    //     )
 
-        document.documentElement.animate(
+    //     document.documentElement.animate(
 
-            [
-                {
-                    clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
-                },
-                {
-                    clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
-                },
-
-
-            ],
-            {
-                duration: 1500,
-                easing: "cubic-bezier(0.87, 0, 0.13, 1)",
-                fill: "forwards",
-                pseudoElement: "::view-transition-new(root)",
-
-            }
+    //         [
+    //             {
+    //                 clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+    //             },
+    //             {
+    //                 clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
+    //             },
 
 
-        )
+    //         ],
+    //         {
+    //             duration: 1000,
+    //             easing: "cubic-bezier(0.87, 0, 0.13, 1)",
+    //             fill: "forwards",
+    //             pseudoElement: "::view-transition-new(root)",
+
+    //         }
 
 
-    }
+    //     )
+
+
+    // }
 
 
     // Click / active effect
@@ -131,9 +131,13 @@ export default function Sidebar() {
         });
 
 
-        router.push(href, {
-            onTransitionReady: slideInOut
-        })
+        router.push(href,
+
+            //     {
+            //     onTransitionReady: slideInOut
+            // }
+
+        )
 
     }
 
@@ -141,52 +145,43 @@ export default function Sidebar() {
     useLayoutEffect(() => {
         if (!containerRef.current) return;
 
-        const el = Array.from(
-            containerRef.current.querySelectorAll("a")
-        ).find(
+        const el = Array.from(containerRef.current.querySelectorAll("a")).find(
             (a) => a.getAttribute("href") === pathname
         ) as HTMLAnchorElement | undefined;
 
-        if (!el) return;
+        // Wrap setState in requestAnimationFrame
+        requestAnimationFrame(() => {
+            if (!el) {
+                setActiveIndicator({ top: 0, height: 0 });
+                return;
+            }
 
-        setActiveIndicator({
-            top: el.offsetTop,
-            height: el.offsetHeight,
+            setActiveIndicator({ top: el.offsetTop, height: el.offsetHeight });
         });
     }, [pathname]);
 
+
+
     return (
-        <section className="flex relative flex-col w-75 h-full pl-8  mt-6">
-
-
+        <section className="flex relative flex-col w-70 h-full pl-8 mt-6">
 
             {/* ACTIVE LINE */}
-            {/* {activeHref && ( */}
             <span
-                className="absolute z-10 -m-px  rounded-4xl  w-0.75 bg-black transition-all duration-300 ease-out"
+                className="absolute z-10 -m-px rounded-4xl w-0.75 bg-gray-950 dark:bg-gray-200 transition-all duration-300 ease-out"
                 style={{
                     top: activeIndicator.top,
                     height: activeIndicator.height,
                 }}
             />
-            {/* )} */}
 
             {/* HOVER LINE */}
             <span
-                className="absolute -m-px w-0.75 rounded bg-gray-500 transition-all duration-300 ease-out"
+                className="absolute -m-px w-0.75 rounded bg-gray-500 dark:bg-gray-400 transition-all duration-300 ease-out"
                 style={{
                     top: hoverIndicator.top,
                     height: hoverIndicator.height,
                 }}
             />
-
-
-
-
-
-
-
-
 
             <VerticalIndicatorNav
                 title="Components"
@@ -197,9 +192,7 @@ export default function Sidebar() {
                 handleMouseEnter={handleMouseEnter} // ✅ no ()
                 handleClick={handleClick}
             />
-
-
-
         </section>
+
     );
 }

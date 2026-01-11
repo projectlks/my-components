@@ -28,7 +28,7 @@ export default function page() {
                     title="Vertical Accordion"
                     link={`${BASE_URL}/components/accordions`}
                     view={<VerticalAccordion />}
-                    code={<CodeBlock code={BasicFAQCode} language="ts" />}
+                    code={<CodeBlock code={BasicFAQCode} language="tsx" />}
                 />
 
 
@@ -36,7 +36,7 @@ export default function page() {
                     title="Basic FAQ"
                     link={`${BASE_URL}/components/accordions`}
                     view={<BasicFAQ />}
-                    code={<CodeBlock code={BasicFAQCode} language="ts" />}
+                    code={<CodeBlock code={BasicFAQCode} language="tsx" />}
                 />
 
 
@@ -44,7 +44,7 @@ export default function page() {
                     title="Accordion Solutions"
                     link={`${BASE_URL}/components/accordions`}
                     view={<AccordionSolutions />}
-                    code={<CodeBlock code={AccordionSolutionsCode} language="ts" />} />
+                    code={<CodeBlock code={AccordionSolutionsCode} language="tsx" />} />
 
 
 

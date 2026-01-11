@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 type SectionHeaderProps = {
   parentLabel: string;
   parentHref: string;
@@ -17,9 +19,9 @@ export default function SectionHeader({
     <div className="mb-2 mt-6 flex w-full items-center justify-between gap-8 px-2 md:px-4">
       <div>
         <p className="line-clamp-1 text-sm text-neutral-500">
-          <a href={parentHref} className="hover:underline">
+          <Link href={parentHref} className="hover:underline">
             {parentLabel}
-          </a>
+          </Link>
           <span className="cursor-default"> / {currentLabel}</span>
         </p>
 
