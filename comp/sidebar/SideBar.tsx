@@ -3,7 +3,7 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import VerticalIndicatorNav from "./VerticalIndicatorNav";
 import { usePathname } from "next/navigation";
-import { useTransitionRouter } from "next-view-transitions";
+import { Link, useTransitionRouter } from "next-view-transitions";
 import { Square3Stack3DIcon } from "@heroicons/react/24/outline";
 
 export type NavItem = {
@@ -14,9 +14,13 @@ export type NavItem = {
 
 
 const components: NavItem[] = [
-    { label: "Accordions", href: "/components/accordions",  },
+    { label: "Accordions", href: "/components/accordions", },
     { label: "Carousels", href: "/components/carousels" },
-    { label: "Links", href: "/components/links" , tag: "new"},
+    { label: "Links", href: "/components/links", tag: "new" },
+];
+const Sections: NavItem[] = [
+    { label: "FAQ", href: "/components/faq", },
+    { label: "testimonials", href: "/components/testimonials" },
 ];
 
 export default function Sidebar() {
@@ -165,11 +169,11 @@ export default function Sidebar() {
 
 
     return (
-        <section className="flex relative flex-col w-70 h-full pl-8 mt-6">
+        <section className="md:flex hidden relative flex-col w-70 h-full pl-8 mt-6" ref={containerRef}>
 
             {/* ACTIVE LINE */}
             <span
-                className="absolute z-10 -m-px rounded-4xl w-0.75 bg-indigo-500 dark:bg-indigo-400  transition-all duration-300 ease-out"
+                className="absolute z-10 -m-px rounded-4xl w-0.75 bg-indigo-500 dark:bg-indigo-400  transition-all duration-500 ease-out"
                 style={{
                     top: activeIndicator.top,
                     height: activeIndicator.height,
@@ -188,26 +192,37 @@ export default function Sidebar() {
             {/* 
             square-3-stack-3d */}
 
-            <div className={`flex items-center text-sm space-x-2 mb-3 ${pathname === "/components" ? "text-indigo-600 dark:text-indigo-400" : ""}`}>
+            <Link href={"/components"} className={`flex items-center text-sm space-x-2 py-1.5 cursor-pointer  ${pathname === "/components" ? "text-indigo-600 dark:text-indigo-400" : ""}`}>
 
                 <Square3Stack3DIcon className="size-5 " />
 
                 <p>
                     All Components
                 </p>
-            </div>
-
+            </Link>
 
             <VerticalIndicatorNav
-                title="Components"
-                items={components}
+                title="Sections"
+                items={Sections}
                 activeHref={pathname}
-                containerRef={containerRef}
+                // containerRef={containerRef}
                 handleMouseLeave={handleMouseLeave}
                 handleMouseEnter={handleMouseEnter} // ✅ no ()
                 handleClick={handleClick}
             />
+            <VerticalIndicatorNav
+                title="Components"
+                items={components}
+                activeHref={pathname}
+                // containerRef={containerRef}
+                handleMouseLeave={handleMouseLeave}
+                handleMouseEnter={handleMouseEnter} // ✅ no ()
+                handleClick={handleClick}
+            />
+
         </section>
 
     );
 }
+
+

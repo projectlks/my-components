@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -12,6 +12,7 @@ import {
 
 import ThemeSelector from "./ThemeSelector";
 import { getGitHubStars } from "@/libs/github";
+import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 
 export default function TopBar() {
     const [open, setOpen] = useState(false);
@@ -74,12 +75,12 @@ export default function TopBar() {
 
                         {/* Navigation */}
                         <nav>
-                            <ul className="flex flex-col gap-5 xl:flex-row xl:items-center 2xl:gap-8">
+                            <ul className="md:flex  hidden  gap-5 xl:flex-row xl:items-center 2xl:gap-8">
                                 {menuItems.map((item) => (
                                     <li key={item} className="py-4">
                                         <Link
                                             href={`/${item}`}
-                                            className={`font-medium ${pathname.startsWith(`/${item}`)
+                                            className={`font-bold ${pathname.startsWith(`/${item}`)
                                                 ? "text-indigo-800 dark:text-indigo-400"
                                                 : "text-[#64748b] hover:text-indigo-800 dark:hover:text-indigo-400"
                                                 }`}
@@ -92,18 +93,20 @@ export default function TopBar() {
                         </nav>
 
                         {/* Mobile menu button */}
-                        <div className="xl:hidden" onClick={() => setOpen(!open)}>
+                        <div className="md:hidden" onClick={() => setOpen(!open)}>
+
+
                             <button
                                 type="button"
                                 aria-expanded={open}
                                 aria-controls="mobile-menu"
                                 aria-label="Toggle menu"
-                                className="ml-auto block"
+                                className="ml-auto flex justify-center items-center w-8 h-8 bg-gray-100 hover:bg-amber-200 dark:bg-gray-800 dark:hover:bg-amber-200 aspect-square rounded-md"
                             >
                                 {open ? (
-                                    <XMarkIcon className="h-6 w-6 text-black" />
+                                    <XMarkIcon className="h-6 w-6 text-black dark:text-white " />
                                 ) : (
-                                    <Bars3Icon className="h-6 w-6 text-black" />
+                                    <Bars3Icon className="h-6 w-6 text-black dark:text-white" />
                                 )}
                             </button>
                         </div>
@@ -150,25 +153,73 @@ export default function TopBar() {
 
             {/* Mobile menu */}
             {open && (
-                <div className="fixed inset-0 z-999 h-screen w-full overflow-hidden bg-transparent opacity-100 duration-200 xl:hidden">
-                    <div className="relative h-full bg-white pb-30 pt-20">
-                        <div className="max-h-full flex-1 overflow-y-auto p-5 pt-0">
-                            <ul>
-                                {menuItems.map((item) => (
-                                    <li key={item} className="group relative">
-                                        <Link
-                                            href={`/${item}`}
-                                            onClick={() => setOpen(false)}
-                                            className="flex items-center justify-between gap-2 border-b border-gray-300 p-3 text-base duration-200 hover:text-primary"
+
+                <div className="fixed inset-0 top-17 z-999 h-full bg-black/50 dark:bg-black/60
+ backdrop-blur-sm transition-opacity duration-300 xl:hidden">
+
+                    <div className=" h-fit w-full overflow-hidden  bg-white dark:bg-gray-950 xl:hidden">
+                        <div className="relative h-full  ">
+                            <div className="max-h-full flex-1 overflow-y-auto p-5 pt-0">
+                                <ul>
+                                    {menuItems.map((item) => (
+                                        <li key={item} className="group relative">
+                                            <Link
+                                                href={`/${item}`}
+                                                onClick={() => setOpen(false)}
+                                                className={`flex  font-bold items-center space-x-2 gap-2 border-b border-gray-300 p-3 text-base
+                                            ${pathname.startsWith(`/${item}`)
+                                                        ? "text-indigo-800 dark:text-indigo-400"
+                                                        : "text-[#64748b] hover:text-indigo-800 dark:hover:text-indigo-400"
+                                                    }
+                                            
+                                            duration-200 hover:text-primary`}
+                                            >
+                                                <ArrowLongRightIcon className="size-6 " />
+
+                                                {item.toUpperCase()}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+
+                                <div className="mt-6 flex items-center gap-4">
+                                    <div className="py-3 flex-1 flex justify-center">
+                                        <ThemeSelector />
+                                    </div>
+
+
+                                    {/* GitHub link */}
+                                    <Link
+                                        href="https://github.com/projectlks/my-components"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="group inline-flex flex-1 justify-center items-center gap-3 rounded-full border border-indigo-600 bg-indigo-600 px-6 py-2 text-base font-medium text-white 
+             hover:bg-indigo-700 hover:border-indigo-500
+             dark:border-indigo-500 dark:bg-indigo-500 pr-2.25 dark:hover:bg-indigo-600"
+                                    >
+                                        <span>Star on GitHub</span>
+
+                                        {/* Star count badge */}
+                                        <span
+                                            className="flex items-center gap-1 rounded-full bg-white  dark:bg-gray-950 px-2.5 py-1 text-xs font-semibold text-gray-950 dark:text-white 
+               "
                                         >
-                                            {item}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
+                                            <StarIcon className="h-4 w-4 text-yellow-500 0 group-hover:scale-110" />
+                                            <span>{stars}</span>
+                                        </span>
+                                    </Link>
+                                </div>
+                            </div>
                         </div>
+
+
+
                     </div>
+                    {/* Theme toggle */}
+
+
                 </div>
+
             )}
 
             <div className="pt-0!" />

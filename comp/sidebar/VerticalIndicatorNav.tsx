@@ -6,7 +6,7 @@ type Props = {
     title: string;
     items: NavItem[];
     activeHref: string;
-    containerRef: RefObject<HTMLDivElement | null>;
+    // containerRef: RefObject<HTMLDivElement | null>;
     handleMouseLeave: () => void;
     handleMouseEnter: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
     handleClick: (href: string, e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
@@ -16,7 +16,7 @@ export default function VerticalIndicatorNav({
     title,
     items,
     activeHref,
-    containerRef,
+    // containerRef,
     handleMouseLeave,
     handleMouseEnter,
     handleClick,
@@ -28,7 +28,7 @@ export default function VerticalIndicatorNav({
 
             {/* Nav container */}
             <div
-                ref={containerRef}
+                // ref={containerRef}
                 className="flex flex-col space-y-2 border-l border-gray-300 dark:border-gray-600 pl-4"
                 onMouseLeave={handleMouseLeave}
             >
@@ -65,3 +65,5 @@ export default function VerticalIndicatorNav({
         </div>
     );
 }
+
+

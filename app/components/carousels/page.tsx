@@ -28,7 +28,7 @@ export default function Page() {
           title="Blog Post Carousel"
           link={`${BASE_URL}/components/carousels`}
           view={<ProjectsSlider />}
-          code={<CodeBlock code={blogPostCarousel} language="ts" />}
+          code={<CodeBlock code={blogPostCarousel} language="tsx" />}
         />
 
 
@@ -37,7 +37,7 @@ export default function Page() {
           title="Blog Post Carousel"
           link={`${BASE_URL}/components/carousels`}
           view={<SwipeCarousel />}
-          code={<CodeBlock code={blogPostCarousel} language="ts" />}
+          code={<CodeBlock code={blogPostCarousel} language="tsx" />}
         />
 
 
@@ -45,7 +45,7 @@ export default function Page() {
           title="Blog Post Carousel"
           link={`${BASE_URL}/components/carousels`}
           view={<HorizontalScrollCarousel />}
-          code={<CodeBlock code={blogPostCarousel} language="ts" />}
+          code={<CodeBlock code={blogPostCarousel} language="tsx" />}
         /> */}
       </div>
     </>

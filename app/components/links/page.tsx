@@ -1,6 +1,8 @@
-import { BasicFAQCode } from '@/code/accordions/BasicFAQCode'
+import { CardLinkCode } from '@/code/links/CardLinkCode'
 import CodeBlock from '@/comp/CodeBlock'
 import CardLink from '@/comp/links/CardLink'
+import HoverImageLinks from '@/comp/links/HoverImageLinks'
+import { RevealLinks } from '@/comp/links/RevealLinks'
 import ProjectHeader from '@/comp/ProjectHeader'
 import SectionHeader from '@/comp/SectionHeader'
 import { BASE_URL } from '@/libs/env'
@@ -54,8 +56,24 @@ export default function Page() {
                 <ProjectHeader
                     title="Card Link"
                     link={`${BASE_URL}/components/links`}
-                    view={<CardLink title='Components' components={components} />}
-                    code={<CodeBlock code={BasicFAQCode} language="tsx" />}
+                    view={<CardLink title='Menus' components={components} />}
+                    code={<CodeBlock code={CardLinkCode} language="tsx" />}
+                />
+
+
+                <ProjectHeader
+                    title="Card Link"
+                    link={`${BASE_URL}/components/links`}
+                    view={<RevealLinks />}
+                    code={<CodeBlock code={CardLinkCode} language="tsx" />}
+                />
+
+                
+                <ProjectHeader
+                    title="Card Link"
+                    link={`${BASE_URL}/components/links`}
+                    view={<HoverImageLinks />}
+                    code={<CodeBlock code={CardLinkCode} language="tsx" />}
                 />
             </div>
 

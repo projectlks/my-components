@@ -23,7 +23,7 @@ export default function page() {
 
 
       <p
-        className="mb-2 max-w-2xl text-md text-neutral-600"
+        className="mb-2 max-w-2xl text-md text-gray-600 dark:text-gray-400"
         style={{ opacity: 1, transform: "none" }}
       >
         Components are built with{" "}
@@ -46,12 +46,12 @@ export default function page() {
         </a>
         , and some combination of{" "}
 
-        , vanilla JS animations, keyframes animations, or another popular, stable
+        vanilla JS animations, keyframes animations, or another popular, stable
         JavaScript animation library. We do our best to keep everything up to date
         with the latest version of each package, but{" "}
         <a
-          className="font-semibold hover:underline"
-          href="mailto:help@hover.dev"
+          className="font-bold hover:underline"
+          href="#"
         >
           let us know
         </a>{" "}
@@ -60,7 +60,7 @@ export default function page() {
       <div className='mt-8'>
 
 
-        <CardLink title="Links" components={components} />
+        <CardLink title="Popular" components={components} />
 
 
         <CardLink title='Components' components={[
