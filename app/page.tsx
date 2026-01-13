@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import { ArrowRightIcon, MoonIcon } from "@heroicons/react/24/outline";
 
@@ -12,20 +13,24 @@ export default function HomePage() {
         {[150, 400, 700, 1000].map((size, i) => (
           <div
             key={i}
-            className="absolute rounded-full border border-gray-800/10 dark:border-gray-500"
+            className="absolute rounded-full border border-gray-800/10 dark:border-gray-200/10"
             style={{ width: size, height: size }}
           />
         ))}
 
         {/* Orbit circles */}
-        <div className="absolute h-10 w-10 rounded-full bg-blue-400 animate-orbit1-alt" />
-        <div className="absolute h-12 w-12 rounded-full bg-blue-600 animate-orbit1" />
+        {/* Orbit 1 – Blue */}
+        <div className="absolute h-10 w-10 rounded-full bg-blue-400 dark:bg-blue-500 animate-orbit1-alt" />
+        <div className="absolute h-12 w-12 rounded-full bg-blue-600 dark:bg-blue-400 animate-orbit1" />
 
-        <div className="absolute h-16 w-16 rounded-full bg-green-400 animate-orbit2" />
-        <div className="absolute h-14 w-14 rounded-full bg-green-600 animate-orbit2-alt" />
+        {/* Orbit 2 – Green */}
+        <div className="absolute h-16 w-16 rounded-full bg-green-400 dark:bg-green-500 animate-orbit2" />
+        <div className="absolute h-14 w-14 rounded-full bg-green-600 dark:bg-green-400 animate-orbit2-alt" />
 
-        <div className="absolute h-20 w-20 rounded-full bg-red-400 animate-orbit3" />
-        <div className="absolute h-16 w-16 rounded-full bg-red-600 animate-orbit3-alt" />
+        {/* Orbit 3 – Red */}
+        <div className="absolute h-20 w-20 rounded-full bg-red-400 dark:bg-red-500 animate-orbit3" />
+        <div className="absolute h-16 w-16 rounded-full bg-red-600 dark:bg-red-400 animate-orbit3-alt" />
+
       </div>
 
       {/* ================= HERO ================= */}
@@ -46,7 +51,7 @@ export default function HomePage() {
           <div className="mt-10 flex justify-center gap-4">
             <Link
               href="/components"
-              className="inline-flex items-center gap-2 rounded bg-indigo-600 px-6 py-3 font-medium text-white transition hover:bg-indigo-500"
+              className="inline-flex items-center gap-2 rounded bg-indigo-600 px-6 py-3 font-medium text-white  hover:bg-indigo-500"
             >
               Browse Components
               <ArrowRightIcon className="h-5 w-5" />
@@ -54,7 +59,7 @@ export default function HomePage() {
 
             <Link
               href="https://github.com/projectlks/my-components"
-              className="flex items-center gap-2 rounded border border-gray-300 px-6 py-3 font-medium transition hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-900 backdrop-blur-xs"
+              className="flex items-center gap-2 rounded border border-gray-300 px-6 py-3 font-medium  hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-900 backdrop-blur-xs"
             >
               <GitHubIcon />
               GitHub
@@ -87,6 +92,26 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+
+
+      {/* ss */}
+
+      <section className="py-20">
+        <h2 className="text-3xl font-bold text-center">Component Categories</h2>
+
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 md:grid-cols-4">
+          {["Buttons", "Cards", "Modals", "Forms"].map((item) => (
+            <div
+              key={item}
+              className="rounded-xl border border-gray-200 p-6 text-center dark:border-gray-800"
+            >
+              <h3 className="font-semibold">{item}</h3>
+            </div>
+          ))}
+        </div>
+      </section>
+
 
       {/* ================= FOOTER ================= */}
       <footer>

@@ -16,7 +16,7 @@ export default function layout({
         //     {/* TOP BAR */}
         //     <TopBar />
 
-        <div className=" flex h-[calc(100vh-68px)] ">
+        <div className=" flex h-[calc(100vh-68px)] bg-white dark:bg-black ">
 
 
             {/* NAV BAR */}

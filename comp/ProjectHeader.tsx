@@ -18,7 +18,7 @@ export default function ProjectHeader({ title, link, view, code }: ProjectHeader
         try {
             await navigator.clipboard.writeText(text);
             toast.success("Link copied to clipboard!");
-   
+
         } catch (err) {
             console.error("Failed to copy:", err);
         }
@@ -74,9 +74,9 @@ export default function ProjectHeader({ title, link, view, code }: ProjectHeader
                     </div>
                 </div>
             </div>
-
-            {active === "view" ? view : code}
-
+            <div className="px-4 py-12 border border-gray-300">
+                {active === "view" ? view : code}
+            </div>
 
 
         </>

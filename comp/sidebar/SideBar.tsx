@@ -4,6 +4,7 @@ import { useLayoutEffect, useRef, useState } from "react";
 import VerticalIndicatorNav from "./VerticalIndicatorNav";
 import { usePathname } from "next/navigation";
 import { useTransitionRouter } from "next-view-transitions";
+import { Square3Stack3DIcon } from "@heroicons/react/24/outline";
 
 export type NavItem = {
     label: string;
@@ -13,8 +14,9 @@ export type NavItem = {
 
 
 const components: NavItem[] = [
-    { label: "Accordions", href: "/components/accordions", tag: "new" },
+    { label: "Accordions", href: "/components/accordions",  },
     { label: "Carousels", href: "/components/carousels" },
+    { label: "Links", href: "/components/links" , tag: "new"},
 ];
 
 export default function Sidebar() {
@@ -167,7 +169,7 @@ export default function Sidebar() {
 
             {/* ACTIVE LINE */}
             <span
-                className="absolute z-10 -m-px rounded-4xl w-0.75 bg-gray-950 dark:bg-gray-200 transition-all duration-300 ease-out"
+                className="absolute z-10 -m-px rounded-4xl w-0.75 bg-indigo-500 dark:bg-indigo-400  transition-all duration-300 ease-out"
                 style={{
                     top: activeIndicator.top,
                     height: activeIndicator.height,
@@ -182,6 +184,19 @@ export default function Sidebar() {
                     height: hoverIndicator.height,
                 }}
             />
+
+            {/* 
+            square-3-stack-3d */}
+
+            <div className={`flex items-center text-sm space-x-2 mb-3 ${pathname === "/components" ? "text-indigo-600 dark:text-indigo-400" : ""}`}>
+
+                <Square3Stack3DIcon className="size-5 " />
+
+                <p>
+                    All Components
+                </p>
+            </div>
+
 
             <VerticalIndicatorNav
                 title="Components"

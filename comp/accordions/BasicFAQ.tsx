@@ -11,7 +11,7 @@ type FAQItemProps = {
 
 export default function BasicFAQ() {
     return (
-        <div className="px-4 py-12 border border-gray-300">
+    
             <div className="mx-auto max-w-3xl">
                 <h3 className="mb-6 text-center text-3xl font-semibold">
                     Frequently asked questions
@@ -38,7 +38,7 @@ export default function BasicFAQ() {
                     answer="Absolutely. You can customize colors, spacing, animations, and icons using Tailwind CSS classes or extend the component as needed."
                 />
             </div>
-        </div>
+     
     );
 }
 
