@@ -149,7 +149,7 @@ export default function DoubleScrollingLogos() {
 
 
 
-            <div className="relative z-10 p-5  flex flex-col justify-center mx-auto">
+            <div className="relative z-10 p-5   flex flex-col justify-center bg-white dark:bg-gray-950 mx-auto">
 
                 <div className="overflow-x-hidden relative w-full ">
                     <div

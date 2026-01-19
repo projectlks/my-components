@@ -16,7 +16,7 @@ export default function layout({
         //     {/* TOP BAR */}
         //     <TopBar />
 
-        <div className=" flex h-[calc(100vh-68px)] bg-white dark:bg-black ">
+        <div className=" flex bg-white dark:bg-gray-950 h-full ">
 
 
             {/* NAV BAR */}
@@ -27,7 +27,7 @@ export default function layout({
 
 
 
-            <main className="flex-1 max-h-full overflow-y-auto">
+            <main className="flex-1  h-full overflow-y-auto">
 
                 {children}
             </main>

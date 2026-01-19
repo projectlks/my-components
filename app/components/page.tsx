@@ -1,13 +1,57 @@
 "use client";
 import CardLink from '@/comp/links/CardLink';
-import { Bars3Icon, ChevronDoubleRightIcon, ChevronDownIcon, LinkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, ChevronDoubleRightIcon, ChevronDownIcon, LinkIcon, QuestionMarkCircleIcon, UserIcon, Squares2X2Icon } from '@heroicons/react/24/outline'
 
 
-const components = [
+const popular = [
   { title: "Carousels", href: "/components/carousels", icon: <ChevronDoubleRightIcon className="h-5 w-5" /> },
   { title: "Buttons", href: "/components/buttons", icon: <ChevronDoubleRightIcon className="h-5 w-5" /> },
 ]
 
+const components = [
+  {
+    title: 'Navbars',
+    href: '/components/navbars',
+    icon: <Bars3Icon className="size-5" />
+  },
+  {
+    title: 'Carousels',
+    href: '/components/carousels',
+    icon: <ChevronDoubleRightIcon className="size-5" />
+  },
+  {
+    title: 'Accordions',
+    href: '/components/accordions',
+    icon: <ChevronDownIcon className="size-5" />
+  },
+
+  {
+    title: 'Links',
+    href: '/components/links',
+    icon: <LinkIcon className="size-5" />
+  },
+]
+
+
+const sections = [
+  {
+    title: 'FAQ',
+    href: '/components/faq',
+    icon: <QuestionMarkCircleIcon className="size-5" />
+  },
+  {
+    title: 'Testimonials ',
+    href: '/components/testimonials',
+    icon: <UserIcon className="size-5" />
+  },
+  {
+    title: 'Modalities',
+    href: '/components/modalities',
+    icon: <Squares2X2Icon className="size-5" />
+  },
+
+
+]
 
 export default function page() {
 
@@ -15,7 +59,7 @@ export default function page() {
 
 
   return (
-    <div className="px-3 py-4 md:px-4 md:py-6 mx-auto max-w-6xl ">
+    <div className="px-3  py-4 md:px-4 md:py-6 mx-auto max-w-6xl ">
 
 
 
@@ -60,32 +104,11 @@ export default function page() {
       <div className='mt-8'>
 
 
-        <CardLink title="Popular" components={components} />
+        <CardLink title="Popular" components={popular} />
 
 
-        <CardLink title='Components' components={[
-          {
-            title: 'Navbars',
-            href: '/components/navbars',
-            icon: <Bars3Icon className="size-5" />
-          },
-          {
-            title: 'Carousels',
-            href: '/components/carousels',
-            icon: <ChevronDoubleRightIcon className="size-5" />
-          },
-          {
-            title: 'Accordions',
-            href: '/components/accordions',
-            icon: <ChevronDownIcon className="size-5" />
-          },
-
-          {
-            title: 'Links',
-            href: '/components/links',
-            icon: <LinkIcon className="size-5" />
-          },
-        ]} />
+        <CardLink title='Sections' components={sections} />
+        <CardLink title='Components' components={components} />
       </div>
 
 

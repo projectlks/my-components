@@ -1,5 +1,6 @@
 
 export const CardLinkCode = `
+
 "use client"
 
 import { ChevronDoubleRightIcon, ChevronDownIcon, LinkIcon, Bars3Icon } from "@heroicons/react/24/outline"
@@ -38,10 +39,12 @@ const components: ComponentItem[] = [
 const CardLink = () => {
   return (
     <>
-      <div className="my-8 mx-auto max-w-6xl">
-        <h2 className="mb-5 text-xl font-semibold">Menus</h2>
+ <div className="my-8 @container max-w-6xl mx-auto ">
+        <h2 className="mb-5 text-xl font-semibold">MENU</h2>
 
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-4     @md:grid-cols-2 
+      @2xl:grid-cols-3 @4xl:grid-cols-4 
+  " >
           {components
             .sort((a, b) => a.title.localeCompare(b.title))
             .map((component) => (
@@ -55,9 +58,9 @@ const CardLink = () => {
         </div>
       </div>
 
+
       {/* CSS Animation */}
-      <style>{\`
-        @keyframes disk-spin {
+      <style>{\`        @keyframes disk-spin {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
         }
@@ -73,6 +76,7 @@ const CardLink = () => {
           animation-play-state: running;
         }
       \`}</style>
+
     </>
   )
 }
@@ -91,7 +95,7 @@ const CardLinkItem = ({ title, href, icon }: CardLinkItemProps) => {
         group relative w-full overflow-hidden
         rounded-tr-3xl
         border border-gray-200 dark:border-gray-800
-        bg-white dark:bg-black
+        bg-white dark:bg-gray-950
         p-6 transition-transform duration-300
         hover:-translate-x-1 hover:-translate-y-1
         hover:border-indigo-500 dark:hover:border-indigo-400
@@ -103,7 +107,7 @@ const CardLinkItem = ({ title, href, icon }: CardLinkItemProps) => {
         {/* Icon */}
         <div
           className="
-            flex h-11 w-11 items-center justify-center
+            flex h-11 min-w-11 items-center justify-center
             rounded-full
             border border-gray-300 dark:border-gray-700
             text-indigo-500 dark:text-indigo-400
@@ -117,12 +121,14 @@ const CardLinkItem = ({ title, href, icon }: CardLinkItemProps) => {
 
         {/* Text */}
         <div className="relative">
-          <h1 className="text-xl font-bold text-gray-900 dark:text-gray-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400">
+          <h1 className="text-xl font-bold capitalize text-gray-900  dark:text-gray-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400">
             {title}
           </h1>
           <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-indigo-600 dark:bg-indigo-400 transition-all duration-300 group-hover:w-full" />
         </div>
       </div>
+
+
     </Link>
   )
 }

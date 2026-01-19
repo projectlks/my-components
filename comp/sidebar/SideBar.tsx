@@ -2,15 +2,20 @@
 
 import { useLayoutEffect, useRef, useState } from "react";
 import VerticalIndicatorNav from "./VerticalIndicatorNav";
-import { usePathname } from "next/navigation";
-import { Link, useTransitionRouter } from "next-view-transitions";
+import { usePathname, useRouter } from "next/navigation";
 import { Square3Stack3DIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
 export type NavItem = {
     label: string;
     href: string;
     tag?: "new" | "updated";
 };
+const Sections: NavItem[] = [
+    { label: "FAQ", href: "/components/faq", },
+    { label: "Testimonials", href: "/components/testimonials" },
+    { label: "Modalities", href: "/components/modalities", tag: "new" },
+];
 
 
 const components: NavItem[] = [
@@ -18,14 +23,10 @@ const components: NavItem[] = [
     { label: "Carousels", href: "/components/carousels" },
     { label: "Links", href: "/components/links", tag: "new" },
 ];
-const Sections: NavItem[] = [
-    { label: "FAQ", href: "/components/faq", },
-    { label: "testimonials", href: "/components/testimonials" },
-];
 
 export default function Sidebar() {
     const containerRef = useRef<HTMLDivElement | null>(null);
-    const router = useTransitionRouter();
+    const router = useRouter();
     const pathname = usePathname(); // ✅ single source of truth
 
 
@@ -115,8 +116,6 @@ export default function Sidebar() {
 
     // Click / active effect
     const handleClick = (href: string, e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.preventDefault(); // optional
-        // setActiveHref(href);
 
 
 
@@ -137,13 +136,7 @@ export default function Sidebar() {
         });
 
 
-        router.push(href,
-
-            //     {
-            //     onTransitionReady: slideInOut
-            // }
-
-        )
+        router.push(href)
 
     }
 
@@ -169,7 +162,7 @@ export default function Sidebar() {
 
 
     return (
-        <section className="md:flex hidden relative flex-col w-70 h-full pl-8 mt-6" ref={containerRef}>
+        <section className="md:flex hidden relative flex-col w-70 h-full pl-8 pt-6" >
 
             {/* ACTIVE LINE */}
             <span
@@ -201,24 +194,27 @@ export default function Sidebar() {
                 </p>
             </Link>
 
-            <VerticalIndicatorNav
-                title="Sections"
-                items={Sections}
-                activeHref={pathname}
-                // containerRef={containerRef}
-                handleMouseLeave={handleMouseLeave}
-                handleMouseEnter={handleMouseEnter} // ✅ no ()
-                handleClick={handleClick}
-            />
-            <VerticalIndicatorNav
-                title="Components"
-                items={components}
-                activeHref={pathname}
-                // containerRef={containerRef}
-                handleMouseLeave={handleMouseLeave}
-                handleMouseEnter={handleMouseEnter} // ✅ no ()
-                handleClick={handleClick}
-            />
+
+            <div ref={containerRef} >
+
+
+                <VerticalIndicatorNav
+                    title="Sections"
+                    items={Sections}
+                    activeHref={pathname}
+                    handleMouseLeave={handleMouseLeave}
+                    handleMouseEnter={handleMouseEnter}
+                    handleClick={handleClick}
+                />
+                <VerticalIndicatorNav
+                    title="Components"
+                    items={components}
+                    activeHref={pathname}
+                    handleMouseLeave={handleMouseLeave}
+                    handleMouseEnter={handleMouseEnter}
+                    handleClick={handleClick}
+                />
+            </div>
 
         </section>
 

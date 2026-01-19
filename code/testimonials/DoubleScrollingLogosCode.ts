@@ -133,7 +133,7 @@ export default function DoubleScrollingLogos() {
 
   return (
     <>
-      <div className="relative z-10 p-5 flex flex-col justify-center mx-auto">
+      <div className="relative z-10 p-5 flex flex-col justify-center bg-white dark:bg-gray-950  mx-auto">
         <div className="overflow-x-hidden relative w-full">
           <div ref={contentRef1} className="flex w-max items-center">
             {[...logos1, ...logos1].map((Icon, idx) => (

@@ -3,9 +3,10 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ToastContainer } from "react-toastify";
 
-import { ViewTransitions } from "next-view-transitions";
+// import { ViewTransitions } from "next-view-transitions";
 import TopBar from "@/comp/TopBar";
 import { ThemeProvider } from "next-themes";
+import ThemeToast from "@/comp/ThemeToast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -71,26 +72,39 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <ViewTransitions>
-      <html lang="en">
-        <head>
-          {/* Next.js will automatically inject metadata from export const metadata */}
-        </head>
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <div className="w-screen h-screen overflow-hidden">
-              <ToastContainer />
-              {/* TOP BAR */}
-              <TopBar />
 
+  // const savedTheme = localStorage.getItem("theme");
+
+
+  return (
+    // <ViewTransitions>
+
+
+    <html lang="en">
+      <head>
+        {/* Next.js will automatically inject metadata from export const metadata */}
+      </head>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-gray-950`}
+      >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <div className="w-screen h-screen overflow-hidden">
+
+            {/* TOP BAR */}
+            <TopBar />
+
+            <div className="h-[calc(100vh-64px)] w-screen fixed bottom-0 mt-16">
+              <ThemeToast />
               {children}
             </div>
-          </ThemeProvider>
-        </body>
-      </html>
-    </ViewTransitions>
+
+          </div>
+
+
+
+        </ThemeProvider>
+      </body>
+    </html>
+    // </ViewTransitions>
   );
 }

@@ -40,7 +40,7 @@ export default function VerticalIndicatorNav({
                         onClick={(e) => handleClick(href, e)}
                         className={`
               flex min-h-8 items-center text-[0.85rem] transition-[padding-left] duration-300 ease-in-out
-              hover:pl-2
+              hover:pl-2 capitalize
 
               ${activeHref === href
                                 ? 'text-neutral-950 dark:text-gray-100 font-bold'

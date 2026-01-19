@@ -1,11 +1,25 @@
 @import "tailwindcss";
 @import "prismjs/themes/prism-okaidia.css";
 
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 * {
   scroll-behavior: smooth;
   font-family: "outfit", sans-serif;
+
 }
 
+/* @theme {
+  --breakpoint-xs: 30rem;
+  --breakpoint-2xl: 100rem;
+  --breakpoint-3xl: 120rem;
+} */
 /* * ::selection {
 
 /* Manual dark mode selector using class */
@@ -29,7 +43,7 @@
 }
 
 /* View Transition Styles */
-::view-transition-old(root),
+/* ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none !important;
 }
@@ -52,7 +66,7 @@
 ::view-transition-old(root) {
   z-index: 1;
   animation: none !important;
-}
+} */
 
 /* ============================= */
 /* Tailwind Docs – Prism Theme   */

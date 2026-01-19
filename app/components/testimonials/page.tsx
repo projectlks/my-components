@@ -5,6 +5,7 @@ import CodeBlock from "@/comp/CodeBlock";
 import ProjectHeader from "@/comp/ProjectHeader";
 import SectionHeader from "@/comp/SectionHeader";
 import DoubleScrollingLogos from "@/comp/testimonials/DoubleScrollingLogos";
+import SpinningLogos from "@/comp/testimonials/SpinningLogos";
 import { BASE_URL } from "@/libs/env";
 
 export default function Page() {
@@ -31,6 +32,13 @@ export default function Page() {
                 />
 
 
+
+                <ProjectHeader
+                    title="Double Scrolling Logos"
+                    link={`${BASE_URL}/components/testimonials`}
+                    view={<SpinningLogos />}
+                    code={<CodeBlock code={DoubleScrollingLogosCode} language="tsx" />}
+                />
 
 
             </div>

@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
@@ -93,6 +94,5 @@ export default function AccordionSolutions() {
 
   );
 }
-
 
 

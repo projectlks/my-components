@@ -50,14 +50,14 @@ export default function TopBar() {
         };
     }, []);
 
-    const menuItems = ["components", "templates", "documentation"];
+    const menuItems = ["components", "templates", "documentation", "test"];
 
     return (
         <>
             <header
                 role="navigation"
                 aria-label="Main navigation"
-                className="w-screen border-b z-9999 border-gray-300 bg-white dark:border-gray-700 dark:bg-gray-950"
+                className="w-screen fixed left-0 right-0 top-0   h-16 border-b z-9999 border-gray-300 bg-white dark:border-gray-700 dark:bg-gray-950"
             >
                 <div className="relative justify-between px-4 py-4 sm:px-8 xl:flex xl:px-12.5 xl:py-0">
                     {/* Left section */}
