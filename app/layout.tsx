@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next"
 import "./globals.css";
-import { ToastContainer } from "react-toastify";
 
 // import { ViewTransitions } from "next-view-transitions";
-import TopBar from "@/comp/TopBar";
+import TopBar from "@/comp/topbar/TopBar";
 import { ThemeProvider } from "next-themes";
 import ThemeToast from "@/comp/ThemeToast";
 
@@ -80,14 +80,14 @@ export default function RootLayout({
     // <ViewTransitions>
 
 
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning >
       <head>
         {/* Next.js will automatically inject metadata from export const metadata */}
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-gray-950`}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem     disableTransitionOnChange>
           <div className="w-screen h-screen overflow-hidden">
 
             {/* TOP BAR */}
@@ -103,6 +103,7 @@ export default function RootLayout({
 
 
         </ThemeProvider>
+         <Analytics />
       </body>
     </html>
     // </ViewTransitions>

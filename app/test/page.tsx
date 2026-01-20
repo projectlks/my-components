@@ -30,7 +30,7 @@ export default function AccordionSolutions() {
   const [openIndex, setOpenIndex] = useState(0); // default: first card open
 
   return (
-    <div className=" bg-white dark:bg-gray-950 py-6">
+    <div className=" bg-white dark:bg-gray-950 p-6">
 
       <div className="w-full max-w-5xl mx-auto grid gap-8 grid-cols-1 lg:grid-cols-[1fr_350px] ">
         <div className="flex flex-col gap-4">
