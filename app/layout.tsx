@@ -21,7 +21,7 @@ const geistMono = Geist_Mono({
 /* ✅ SEO / Metadata */
 export const metadata: Metadata = {
   title: {
-    default: "Linkar UI – Modern Web Components & Animations",
+    default: "Linkar UI - Modern Web Components & Animations",
     template: "%s | Linkar UI",
   },
   description:
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   publisher: "Linkar UI",
 
   openGraph: {
-    title: "Linkar UI – Modern Web Components & Animations",
+    title: "Linkar UI - Modern Web Components & Animations",
     description:
       "Explore reusable UI components, smooth animations, and modern frontend techniques built with Next.js and Tailwind CSS.",
     type: "website",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Linkar UI – Modern Web Components & Animations",
+    title: "Linkar UI - Modern Web Components & Animations",
     description:
       "A modern frontend playground for reusable components and smooth animations using Next.js & Tailwind CSS.",
   },
@@ -106,6 +106,6 @@ export default function RootLayout({
          <Analytics />
       </body>
     </html>
-    // </ViewTransitions>
+    // </ViewTransitions>                           ာငခန
   );
 }

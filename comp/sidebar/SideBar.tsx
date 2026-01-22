@@ -5,24 +5,7 @@ import VerticalIndicatorNav from "./VerticalIndicatorNav";
 import { usePathname, useRouter } from "next/navigation";
 import { Square3Stack3DIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-
-export type NavItem = {
-    label: string;
-    href: string;
-    tag?: "new" | "updated";
-};
-const Sections: NavItem[] = [
-    { label: "FAQ", href: "/components/faq", },
-    { label: "Testimonials", href: "/components/testimonials" },
-    { label: "Modalities", href: "/components/modalities", tag: "new" },
-];
-
-
-const components: NavItem[] = [
-    { label: "Accordions", href: "/components/accordions", },
-    { label: "Carousels", href: "/components/carousels" },
-    { label: "Links", href: "/components/links", tag: "new" },
-];
+import { components, sections } from "@/app/data/navigation";
 
 export default function Sidebar() {
     const containerRef = useRef<HTMLDivElement | null>(null);
@@ -200,7 +183,7 @@ export default function Sidebar() {
 
                 <VerticalIndicatorNav
                     title="Sections"
-                    items={Sections}
+                    items={sections}
                     activeHref={pathname}
                     handleMouseLeave={handleMouseLeave}
                     handleMouseEnter={handleMouseEnter}
