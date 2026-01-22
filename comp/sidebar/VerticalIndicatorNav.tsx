@@ -1,6 +1,7 @@
 import React, { RefObject } from 'react';
-import { NavItem } from './SideBar';
+// import { NavItem } from './SideBar';
 import Link from 'next/link';
+import { NavItem } from '@/app/types/type';
 
 type Props = {
     title: string;
